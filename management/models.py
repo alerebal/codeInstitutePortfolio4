@@ -1,4 +1,4 @@
-""" Models """
+""" Managment Models """
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from .helpers import lunch, dinner
