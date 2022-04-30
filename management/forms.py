@@ -1,6 +1,7 @@
 """ Management Forms """
 from django import forms
 from .models import Reservation
+from .widgets import DatePickerInput
 
 
 class ReservationForm(forms.ModelForm):
@@ -11,3 +12,6 @@ class ReservationForm(forms.ModelForm):
         model = Reservation
         fields = ('guests', 'date', 'time', 'name', 'last_name', 'email',
                   'phone')
+        widgets = {
+            'date': DatePickerInput()
+        }
