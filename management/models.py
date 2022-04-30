@@ -5,7 +5,7 @@ from .helpers import lunch, dinner
 
 
 class Reservation(models.Model):
-    """Reservation Cale"""
+    """Reservation Model"""
     guests = models.PositiveIntegerField(default=1,
                                          validators=[MinValueValidator(1),
                                                      MaxValueValidator(10)])
