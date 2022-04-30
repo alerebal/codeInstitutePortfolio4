@@ -19,5 +19,6 @@ from management.views import reservation_form_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('reservation_form/', reservation_form_view, name='reservation_form')
+    path('reservation_form/', reservation_form_view,
+         name='reservation_form')
 ]

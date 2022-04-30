@@ -1,7 +1,7 @@
-<form action="#" method="POST">
+<form action="{% url 'reservation_form' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    
+
     <button type="submit">
         send
     </button>
