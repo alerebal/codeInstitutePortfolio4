@@ -6,31 +6,42 @@ from .models import Reservation
 
 def reservation_form_view(request):
     """ Reservation form view """
+
     if request.method == 'POST':
-        user_same_reservation = False
-        reservations = Reservation.objects.filter(email=request.POST['email'])
-        if len(reservations) > 0:
-            # User has already reservations
-            print('has reservations')
-            for reser in reservations:
-                # User has a reservstion at the same day and same time
-                if str(reser.date) == str(request.POST['date']):
-                    if str(reser.time) == str(request.POST['time']):
-                        print('reservation at same day and time')
-                        user_same_reservation = True
-                    # else:
-                    #     print('reservation at same day but different time')
-            if not user_same_reservation:
-                # User has a reservation at same date but different time
+        try:
+            resers = Reservation.objects.filter(email=request.POST['email'])
+            if len(resers) > 0:
+                # User has already reservations
+                for reser in resers:
+                    if str(reser.date) == str(request.POST['date']):
+                        # User has a reservation at the same day and same time
+                        if str(reser.time) == str(request.POST['time']):
+                            raise ValueError('same day and time')
+                        else:
+                        # same day, different time
+                            raise ValueError('same day but different time')
+                # different day, the reservation can be saved
                 form = ReservationForm(request.POST)
                 if form.is_valid():
                     form.save()
-        else:
-            # User has not reservation
-            form = ReservationForm(request.POST)
-            if form.is_valid():
-                form.save()
-            print('not previous reservation recorded')
+            else:
+                # not reservations, reservation can be saved
+                form = ReservationForm(request.POST)
+                if form.is_valid():
+                    form.save()
+        except ValueError as error:
+            # print('except')
+            # print(error)
+            if ValueError == 'same day and time':
+                print('1', error)
+            else:
+                print(9)
+                form = ReservationForm(request.POST)
+                context = {
+                    'error': f'You already have a reservation at {error}',
+                    'form': form
+                }
+                return render(request, 'reservationForm.html', context)
     form = ReservationForm()
     context = {
         'form': form
