@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user %}
+<div class="message">
+    <p>
+        Thanks {{user.name}}, your reservation for the day {{user.date}}
+        at {{user.time}} is confirmed
+    </p>
+</div>
+<div class="links">
+    <button class="btn btn-primary btn-sm">
+        Your reservation
+    </button>
+    <a href="{% url 'home' %}">
+        <button class="btn btn-primary btn-sm">
+            Go to Home page
+        </button>
+    </a>
+</div>
+{% else %}
+<form action="{% url 'reservation_form' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <button type="submit">
+        send
+    </button>
+
+</form>
+{% endif %}
+{% if error %}
+{{ error }}
+{% endif %}
+{% endblock content %}
