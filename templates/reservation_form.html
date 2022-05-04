@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if user %}
+{% if user_res %}
 <div class="message">
     <p>
-        Thanks {{user.name}}, your reservation for the day {{user.date}}
-        at {{user.time}} is confirmed
+        Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+        at {{user_res.time}} is confirmed
     </p>
 </div>
 <div class="links">
@@ -18,17 +18,41 @@
     </a>
 </div>
 {% else %}
+{% if error %}
+<div class="message">
+    <p>
+        Sorry {{user.name}}, {{error}}
+    </p>
+</div>
+{% if diff_hour %}
+    <div>
+        <p>
+            Do you want to make the reservation anyway?
+        </p>
+        <button class="btn btn-primary btn-sm">
+            Yes
+        </button>
+        <button class="btn btn-danger btn-sm">
+            No
+        </button>
+    </div>
+{% else %}
+    <div>
+        <p><a href="#">Go to the reservation</a></p>
+    </div>
+{% endif %}
+{% endif %}
 <form action="{% url 'reservation_form' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
 
-    <button type="submit">
+    <button type="submit" class="btn btn-primary btn-sm">
         send
     </button>
 
 </form>
 {% endif %}
-{% if error %}
-{{ error }}
-{% endif %}
+
 {% endblock content %}
+
+
