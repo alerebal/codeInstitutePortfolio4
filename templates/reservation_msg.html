@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Reservation msg</h2>
+{% if user_res %}
+    <div class="message">
+        <p>
+            Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+            at {{user_res.time}} is confirmed
+        </p>
+    </div>
+    <div class="links">
+        <a href="#">
+            <button class="btn btn-primary btn-sm">
+                Your reservation
+            </button>
+        </a>
+        <a href="{% url 'home' %}">
+            <button class="btn btn-primary btn-sm">
+                Go to Home page
+            </button>
+        </a>
+    </div>
+{% else %}
+<div class="message">
+    <p>
+        Sorry {{user.name}}, {{error}}
+    </p>
+</div>
+    {% if diff_hour %}
+        <div>
+            <p>
+                Do you want to make the reservation anyway?
+            </p>
+            <a href="#">
+                <button class="btn btn-primary btn-sm">
+                    Yes
+                </button>
+            </a>
+            <button class="btn btn-primary btn-sm">
+                Yes
+            </button>
+            <button class="btn btn-danger btn-sm">
+                No
+            </button>
+        </div>
+    {% else %}  
+        <div>
+            <a href="{% url 'edit_reservation' reservation_id %}">
+                <button class="btn btn-primary btn-sm">
+                    Your reservation
+                </button>
+            </a>
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock content %}
+
+
+

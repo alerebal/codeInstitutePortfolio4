@@ -22,7 +22,7 @@ def reservation_form_view(request):
             'time': time
         }
         diff_hour = False
-        reservaiton_id = None
+        reservation_id = None
         try:
             resers = Reservation.objects.filter(email=request.POST['email'])
             if len(resers) > 0:
@@ -31,11 +31,11 @@ def reservation_form_view(request):
                     if str(reser.date) == str(request.POST['date']):
                         # User has a reservation at the same day and same time
                         if str(reser.time) == str(request.POST['time']):
-                            reservaiton_id = reser.pk
+                            reservation_id = reser.pk
                             raise ValueError('same day and time')
                         else:
                             # same day, different time
-                            reservaiton_id = reser.pk
+                            reservation_id = reser.pk
                             diff_hour = True
                             raise ValueError('same day but different time')
                 # different day, the reservation can be saved
@@ -43,9 +43,10 @@ def reservation_form_view(request):
                     form.save()
                     context = {
                         'form': form,
-                        'user_res': user_data
-                        }
-                return render(request, 'reservation_form.html', context)
+                        'user_res': user_data,
+                        'reservation_id': reservation_id
+                    }
+                return render(request, 'reservation_msg.html', context)
             else:
                 # not reservations, reservation can be saved
                 form = ReservationForm(request.POST)
@@ -54,22 +55,21 @@ def reservation_form_view(request):
                     context = {
                         'form': form,
                         'user_res': user_data,
+                        'reservation_id': reservation_id
                     }
-                return render(request, 'reservation_form.html', context)
+                return render(request, 'reservation_msg.html', context)
         except ValueError as error:
-
             context = {
                 'error': f'you already have a reservation at {error}',
                 'form': form,
                 'user': user_data,
                 'diff_hour': diff_hour,
-                'reservation_id': reservaiton_id
+                'reservation_id': reservation_id
             }
-            return render(request, 'reservation_form.html', context)
+            return render(request, 'reservation_msg.html', context)
     form = ReservationForm()
     context = {
         'form': form,
-        # 'action': 'reservation_form'
     }
     return render(request, 'reservation_form.html', context)
 
@@ -79,6 +79,7 @@ def edit_reservation(request, reservation_id):
     print(reservation_id)
     reservation = get_object_or_404(Reservation, id=reservation_id)
     if request.method == 'POST':
+        print('post')
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
@@ -86,6 +87,5 @@ def edit_reservation(request, reservation_id):
     form = ReservationForm(instance=reservation)
     context = {
         'form': form,
-        # 'action': 'edit_reservation'
     }
     return render(request, 'edit_reservation.html', context)
