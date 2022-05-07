@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if no_room %}
+    <div class="message">
+        <p>
+            Unfortunately there is no reservations available for that time. Please choose another time.
+        </p>
+    </div>
+{% endif %}
 <form action="{% url 'reservation_form' %}" method="POST">
     {% csrf_token %}
     {{ form.as_p }}

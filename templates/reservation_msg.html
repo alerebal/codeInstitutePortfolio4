@@ -9,7 +9,7 @@
         </p>
     </div>
     <div class="links">
-        <a href="#">
+        <a href="{% url 'edit_reservation' reservation_id %}">
             <button class="btn btn-primary btn-sm">
                 Your reservation
             </button>
@@ -29,7 +29,7 @@
     {% if diff_hour %}
         <div>
             <p>
-                Do you want to make the reservation anyway?
+                Do you want to make two reservations for the same day?
             </p>
             <a href="#">
                 <button class="btn btn-primary btn-sm">
