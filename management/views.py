@@ -14,6 +14,7 @@ def reservation_form_view(request):
     if request.method == 'POST':
         form = ReservationForm(request.POST)
         diff_hour = False
+        new_time = None
         reservation = None
         no_room = False
         try:
@@ -35,6 +36,7 @@ def reservation_form_view(request):
                             # same day, different time
                             if str(reser.time) != str(request.POST['time']):
                                 diff_hour = True
+                                new_time = request.POST['time']
                             # same day and same time
                             reservation = reser
                             raise ValueError(f'{reser.date} at {reser.time}')
@@ -65,9 +67,10 @@ def reservation_form_view(request):
         except ValueError as error:
             context = {
                 'error': f'you already have a reservation on {error}',
-                'user': reservation or None,
+                'user': reservation,
                 'diff_hour': diff_hour,
-                'reservation_id': reservation.pk or None
+                'reservation_id': reservation.pk,
+                'new_time': new_time
             }
             return render(request, 'reservation_msg.html', context)
     form = ReservationForm()
@@ -87,14 +90,19 @@ def is_room_available(date, time, guests, room=30):
     return total_people < room
 
 
-def edit_reservation(request, reservation_id):
-    """ Form to edit the reservation"""
+def edit_reservation(request, reservation_id, new_time=None):
+    """ Form to edit the reservation or confirm two reservations at same day"""
     reservation = get_object_or_404(Reservation, id=reservation_id)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
             return redirect('home')
+    if new_time:
+        reservation.pk = None
+        reservation.time = new_time
+        reservation.save()
+        return redirect('home')
     form = ReservationForm(instance=reservation)
     context = {
         'form': form,

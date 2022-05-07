@@ -9,7 +9,7 @@
         </p>
     </div>
     <div class="links">
-        <a href="{% url 'edit_reservation' reservation_id %}">
+        <a href="{% url 'edit_reservation' reservation_id None%}">
             <button class="btn btn-primary btn-sm">
                 Your reservation
             </button>
@@ -31,21 +31,18 @@
             <p>
                 Do you want to make two reservations for the same day?
             </p>
-            <a href="#">
+            <a href="{% url 'edit_reservation' reservation_id new_time %}">
                 <button class="btn btn-primary btn-sm">
                     Yes
                 </button>
             </a>
-            <button class="btn btn-primary btn-sm">
-                Yes
-            </button>
             <button class="btn btn-danger btn-sm">
                 No
             </button>
         </div>
     {% else %}  
         <div>
-            <a href="{% url 'edit_reservation' reservation_id %}">
+            <a href="{% url 'edit_reservation' reservation_id None%}">
                 <button class="btn btn-primary btn-sm">
                     Your reservation
                 </button>
