@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from management.views import (reservation_form_view, home, edit_reservation)
+from management.views import (reservation_form_view, home, edit_reservation,
+                              delete_reservation)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,4 +26,6 @@ urlpatterns = [
     #      name='edit_reservation'),
     path('edit_reservation/<reservation_id>/<new_time>', edit_reservation,
          name='edit_reservation'),
+    path('delete_reservation/<reservation_id>', delete_reservation,
+         name='delete_reservation')
 ]

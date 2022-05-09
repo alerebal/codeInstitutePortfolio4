@@ -90,7 +90,7 @@ def is_room_available(date, time, guests, room=30):
     return total_people < room
 
 
-def edit_reservation(request, reservation_id, new_time=None):
+def edit_reservation(request, reservation_id, new_time):
     """ Form to edit the reservation or confirm two reservations at same day"""
     reservation = get_object_or_404(Reservation, id=reservation_id)
     if request.method == 'POST':
@@ -98,13 +98,23 @@ def edit_reservation(request, reservation_id, new_time=None):
         if form.is_valid():
             form.save()
             return redirect('home')
-    if new_time:
+    if new_time == 'None':
+        form = ReservationForm(instance=reservation)
+        context = {
+            'form': form,
+            'reservation_id': reservation.pk
+        }
+        return render(request, 'edit_reservation.html', context)
+    else:
         reservation.pk = None
         reservation.time = new_time
         reservation.save()
         return redirect('home')
-    form = ReservationForm(instance=reservation)
-    context = {
-        'form': form,
-    }
-    return render(request, 'edit_reservation.html', context)
+
+
+def delete_reservation(request, reservation_id):
+    """ Delete a reservation """
+    print(reservation_id)
+    reservation = get_object_or_404(Reservation, id=reservation_id)
+    reservation.delete()
+    return redirect('home')
