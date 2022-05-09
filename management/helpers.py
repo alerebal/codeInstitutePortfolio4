@@ -23,3 +23,10 @@ dinner = [
     ('22:30', '22:30'),
     ('23:00', '23:00'),
 ]
+
+
+menu_kind = [
+    ('dish', 'Dish'),
+    ('dessert', 'Dessert'),
+    ('drink', 'Drink'),
+]

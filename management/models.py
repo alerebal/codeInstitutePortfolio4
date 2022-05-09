@@ -1,7 +1,7 @@
 """ Managment Models """
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-from .helpers import lunch, dinner
+from .helpers import lunch, dinner, menu_kind
 
 
 class Reservation(models.Model):
@@ -17,7 +17,39 @@ class Reservation(models.Model):
     name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     email = models.EmailField()
-    phone = models.CharField(max_length=10, blank=True)
+    phone = models.CharField(max_length=10, blank=True, null=True)
 
     def __str__(self):
         return f"{self.name} {self.last_name} - {self.date} - {self.guests}"
+
+
+class Item(models.Model):
+    """ Menu item model """
+    name = models.CharField(max_length=30)
+    price = models.FloatField(default=0.0,
+                              validators=[MinValueValidator(0),
+                                          MaxValueValidator(100)])
+    kind = models.CharField(max_length=30, choices=menu_kind, default='dish')
+
+    class Meta:
+        """ Item meta class """
+        ordering = ['name']
+
+    def __str__(self):
+        return f"{self.name} - Price: {self.price} - {self.kind}"
+
+
+class Menu(models.Model):
+    """ Menu model"""
+    name = models.CharField(max_length=30)
+    items = models.ManyToManyField('Item')
+    is_offer = models.BooleanField(default=False)
+    discount = models.IntegerField(blank=True, null=True)
+    is_daily = models.BooleanField(default=False)
+    day = models.CharField(max_length=10, blank=True, null=True)
+
+    class Meta:
+        ordering = ['name']
+
+    def __str__(self):
+        return f"{self.name}"
