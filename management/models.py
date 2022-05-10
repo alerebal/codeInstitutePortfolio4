@@ -25,7 +25,7 @@ class Reservation(models.Model):
 
 class Item(models.Model):
     """ Menu item model """
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     price = models.FloatField(default=0.0,
                               validators=[MinValueValidator(0),
                                           MaxValueValidator(100)])
@@ -41,7 +41,7 @@ class Item(models.Model):
 
 class Menu(models.Model):
     """ Menu model"""
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=30, unique=True)
     items = models.ManyToManyField('Item')
     is_offer = models.BooleanField(default=False)
     discount = models.IntegerField(blank=True, null=True)
@@ -49,7 +49,12 @@ class Menu(models.Model):
     day = models.CharField(max_length=10, blank=True, null=True)
 
     class Meta:
+        """ Menu meta class """
         ordering = ['name']
+
+    def get_items(self, obj):
+        """ get menu's items """
+        return list(obj.items.all())
 
     def __str__(self):
         return f"{self.name}"

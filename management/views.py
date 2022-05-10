@@ -1,12 +1,15 @@
 """ Management Views """
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ReservationForm
-from .models import Reservation
+from .models import Reservation, Menu
 
 
 def home(request):
     """ Home page """
     return render(request, 'home.html')
+
+
+# Reservations //////////////////////////////////////////////////
 
 
 def reservation_form_view(request):
@@ -114,7 +117,21 @@ def edit_reservation(request, reservation_id, new_time):
 
 def delete_reservation(request, reservation_id):
     """ Delete a reservation """
-    print(reservation_id)
     reservation = get_object_or_404(Reservation, id=reservation_id)
     reservation.delete()
     return redirect('home')
+
+
+# Menus ////////////////////////////////////////////
+
+
+def display_menu(request, kind):
+    """ display a menu according to its type (dish, dessert, drink, etc) """
+    menu = get_object_or_404(Menu, name=kind)
+    items = menu.get_items(menu)
+    context = {
+        'menu': menu,
+        'items': [items]
+    }
+    print(items)
+    return render(request, 'display_menu.html', context)
