@@ -1,0 +1,28 @@
+body {
+    background-color: black;
+    overflow-x: hidden;
+}
+
+main {
+    min-height: 80vh;
+}
+
+form {
+    padding: 2em;
+    margin: 2em;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+
+form p {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 1em;
+}
+
+form button {
+    width: 50%;
+    margin: 0 auto;
+}

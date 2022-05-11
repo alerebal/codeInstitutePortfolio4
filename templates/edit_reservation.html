@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Update</h2>
-<form method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary btn-sm">
-        Update
-    </button>
-</form>
-<button class="btn btn-danger btn-sm" >
-    <a href="{% url 'delete_reservation' reservation_id %}">
-        Delete
-    </a>
-</button>
+<div class="row">
+    <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <button type="submit" class="btn btn-success btn-sm">
+                    Update
+                </button>
+            </p>
+        </form>
+        <button class="btn btn-danger btn-sm" >
+            <a href="{% url 'delete_reservation' reservation_id %}">
+                Delete
+            </a>
+        </button>
+    </div>
+    
+</div>
 {% endblock content %}
