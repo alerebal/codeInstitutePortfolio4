@@ -1,26 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="row">
+<div class="row form-container ">
     {% if no_room %}
-        <div class="row message text-center">
+        <div class="col message text-center mt-5">
             <p>
                 Unfortunately there is no reservations available for that time. Please choose another time.
             </p>
         </div>
     {% endif %}
-    <div class="row">
-        <div class="col-sm-12 col-md-10 col-lg-8 mx-auto">
+        <div class="col-sm-12 col-md-8 col-lg-6 mx-auto mt-5">
             <form action="{% url 'reservation_form' %}" method="POST">
                 {% csrf_token %}
                 {{ form.as_p }}
         
                 <p>
-                    <button type="submit" class="btn btn-success btn-sm">
+                    <button type="submit" class="btn btn-sm custom-btn">
                         Submit
                     </button>
                 </p>
             </form>
         </div>
-    </div>
 </div>
 {% endblock content %}

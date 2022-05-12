@@ -18,7 +18,7 @@
 <body>
     <div class="container-fluid">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-dark custom-navbar">
                 <div class="container-fluid">
                   <a class="navbar-brand" href="{% url 'home' %}">Vegan Restaurant</a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,10 +33,10 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Our menus
                         </a>
-                        <ul class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item bg-dark text-light" href="{% url 'display_menu' 'Dishes' %}">Dishes</a></li>
-                          <li><a class="dropdown-item bg-dark text-light" href="{% url 'display_menu' 'Desserts' %}">Desserts</a></li>
-                          <li><a class="dropdown-item bg-dark text-light" href="{% url 'display_menu' 'Drinks' %}">Drinks</a></li>
+                        <ul class="dropdown-menu custom-navbar border-0" aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item bg-transparent text-light" href="{% url 'display_menu' 'Dishes' %}">Dishes</a></li>
+                          <li><a class="dropdown-item bg-transparent text-light" href="{% url 'display_menu' 'Desserts' %}">Desserts</a></li>
+                          <li><a class="dropdown-item bg-transparent text-light" href="{% url 'display_menu' 'Drinks' %}">Drinks</a></li>
                         </ul>
                       </li>
                       <li class="nav-item">
@@ -49,14 +49,13 @@
                   </div>
                 </div>
               </nav>
-            <h1>Vegan Restaurant</h1>
         </header>
-        <main >
+        <main>
             {% block content %}
             {% endblock content %}
         </main>
         <footer>
-            <div >
+            <div class="container-fluid sticky-bottom text-light">
                 <h3>Footer</h3>
             </div>
         </footer>

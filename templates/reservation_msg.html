@@ -1,56 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Reservation msg</h2>
-{% if user_res %}
-    <div class="message">
-        <p>
-            Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
-            at {{user_res.time}} is confirmed
-        </p>
+<div class="row msg-container">
+    <div class="col-sm-12 col-md-8 col-md-6 text-center mx-auto mt-5">
+        <div class="row  mt-5 msg">
+            {% if user_res %}
+            <div class="message">
+                <p>
+                    Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+                    at {{user_res.time}} is confirmed
+                </p>
+            </div>
+            <div class="links">
+                <a href="{% url 'edit_reservation' reservation_id None%}">
+                    <button class="btn btn-sm custom-btn">
+                        Your reservation
+                    </button>
+                </a>
+                <a href="{% url 'home' %}">
+                    <button class="btn btn-sm custom-btn">
+                        Go to Home page
+                    </button>
+                </a>
+            </div>
+            {% else %}
+            <div class="message">
+                <p>
+                    Sorry {{user.name}}, {{error}}
+                </p>
+            </div>
+            {% if diff_hour %}
+            <div>
+                <p>
+                    Do you want to make two reservations for the same day?
+                </p>
+                <a href="{% url 'edit_reservation' reservation_id new_time %}">
+                    <button class="btn btn-sm custom-btn">
+                        Yes
+                    </button>
+                </a>
+                <button class="btn btn-sm custom-btn delete">
+                    No
+                </button>
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'edit_reservation' reservation_id new_time%}">
+                    <button class="btn btn-sm custom-btn">
+                        Your reservation
+                    </button>
+                </a>
+            </div>
+            {% endif %}
+            {% endif %}
+        </div>
     </div>
-    <div class="links">
-        <a href="{% url 'edit_reservation' reservation_id None%}">
-            <button class="btn btn-primary btn-sm">
-                Your reservation
-            </button>
-        </a>
-        <a href="{% url 'home' %}">
-            <button class="btn btn-primary btn-sm">
-                Go to Home page
-            </button>
-        </a>
-    </div>
-{% else %}
-<div class="message">
-    <p>
-        Sorry {{user.name}}, {{error}}
-    </p>
 </div>
-    {% if diff_hour %}
-        <div>
-            <p>
-                Do you want to make two reservations for the same day?
-            </p>
-            <a href="{% url 'edit_reservation' reservation_id new_time %}">
-                <button class="btn btn-primary btn-sm">
-                    Yes
-                </button>
-            </a>
-            <button class="btn btn-danger btn-sm">
-                No
-            </button>
-        </div>
-    {% else %}  
-        <div>
-            <a href="{% url 'edit_reservation' reservation_id new_time%}">
-                <button class="btn btn-primary btn-sm">
-                    Your reservation
-                </button>
-            </a>
-        </div>
-    {% endif %}
-{% endif %}
 {% endblock content %}
-
-
-

@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>{{menu.name}}</h2>
-    <ul>
-        {% for item in items %}
-            {% for i in item %}
+<div class="row display-container">
+    <div class="col-sm-12 col-md-8 col-lg-6 mx-auto mt-5 ">
+        <div class="row content mt-5">
+            <h2 class="text-center">{{menu.name}}</h2>
+            <ul>
+                {% for item in items %}
+                {% for i in item %}
                 <li>
                     {{i.name}} - {{i.price}}
                 </li>
-            {% endfor %}
-        {% endfor %}
-    </ul>
+                {% endfor %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
 {% endblock content %}

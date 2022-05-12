@@ -1,16 +1,74 @@
+:root {
+    --cl-primary: rgb(95, 108, 62);
+    --cl-secondary: rgb(90,152,43);
+    --cl-neutral: rgb(220, 213, 210);
+    --cl-neutral-transparent: rgba(0, 0, 0, 0.76);
+}
+
+/* General */
 body {
     background-color: black;
     overflow-x: hidden;
+    color: var(--cl-neutral)
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
 }
 
 main {
     min-height: 80vh;
 }
 
+/* Navbar */
+.custom-navbar {
+    background-color: var(--cl-neutral-transparent);
+}
+
+/* Home */
+.home-container {
+    height: 100vh;
+    background-image: url('../img/dark-food-1920.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Display menus */
+.display-container {
+    height: 100vh;
+    background-image: url('../img/cilantro-1920.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;   
+}
+
+.content {
+    background-color: var(--cl-neutral-transparent);
+    color: var(--cl-secondary);
+    font-weight: 900;
+    font-size: 1.3em;
+    border-radius: 10px;
+    padding: .5em 1.5em;
+}
+
+/* Forms */
+.form-container {
+    height: 100vh;
+    background-image: url('../img/parsely-1920.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 form {
     padding: 2em;
     margin: 2em;
-    border: 2px solid gray;
+    border: 2px solid var(--cl-neutral);
     border-radius: 10px;
 }
 
@@ -26,3 +84,29 @@ form button {
     width: 50%;
     margin: 0 auto;
 }
+
+.custom-btn {
+    background-color: var(--cl-primary);
+    color: var(--cl-neutral)
+}
+
+/* messages */
+.msg-container {
+    height: 100vh;
+    background-image: url('../img/spinach_1920.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.msg {
+    background-color: var(--cl-neutral-transparent);
+    color: var(--cl-neutral);
+    padding: 2em;
+    font-weight: 900;
+    font-size: large;
+    border-radius: 10px;
+}
+
+
+/* Footer */
