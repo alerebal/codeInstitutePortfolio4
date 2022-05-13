@@ -47,26 +47,38 @@ def reservation_form_view(request):
                     if form.is_valid():
                         form.save()
                         reservations = Reservation.objects.filter(
-                                       email=request.POST['email'])
+                            email=request.POST['email'])
                         reservation = reservations[len(reservations)-1]
                         context = {
                             'user_res': reservation,
                             'reservation_id': reservation.id
                         }
-                    return render(request, 'reservation_msg.html', context)
+                        return render(request, 'reservation_msg.html', context)
+                    else:
+                        context = {
+                            'form': form
+                        }
+                        return render(request, 'reservation_form.html',
+                                      context)
                 else:
                     # not reservations, reservation can be saved
                     form = ReservationForm(request.POST)
                     if form.is_valid():
                         form.save()
                         reservations = Reservation.objects.filter(
-                                       email=request.POST['email'])
+                            email=request.POST['email'])
                         reservation = reservations[len(reservations)-1]
                         context = {
                             'user_res': reservation,
                             'reservation_id': reservation.id
                         }
-                    return render(request, 'reservation_msg.html', context)
+                        return render(request, 'reservation_msg.html', context)
+                    else:
+                        context = {
+                            'form': form
+                        }
+                        return render(request, 'reservation_form.html',
+                                      context)
         except ValueError as error:
             context = {
                 'error': f'you already have a reservation on {error}',
@@ -100,7 +112,20 @@ def edit_reservation(request, reservation_id, new_time):
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            context = {
+                'user_res': reservation,
+                'reservation_id': reservation.pk,
+                'new_time': new_time,
+                'updated': True
+            }
+            return render(request, 'reservation_msg.html', context)
+        else:
+            context = {
+                'form': form
+            }
+            return render(request, 'reservation_form.html',
+                          context)
+
     if new_time == 'None':
         form = ReservationForm(instance=reservation)
         context = {
@@ -112,7 +137,12 @@ def edit_reservation(request, reservation_id, new_time):
         reservation.pk = None
         reservation.time = new_time
         reservation.save()
-        return redirect('home')
+        context = {
+            'user_res': reservation,
+            'reservation_id': reservation.pk,
+            'new_time': new_time,
+        }
+        return render(request, 'reservation_msg.html', context)
 
 
 def delete_reservation(request, reservation_id):

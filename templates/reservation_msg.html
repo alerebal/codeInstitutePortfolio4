@@ -4,12 +4,21 @@
     <div class="col-sm-12 col-md-8 col-md-6 text-center mx-auto mt-5">
         <div class="row  mt-5 msg">
             {% if user_res %}
-            <div class="message">
-                <p>
-                    Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
-                    at {{user_res.time}} is confirmed
-                </p>
-            </div>
+                {% if updated %} 
+                <div class="message">
+                    <p>
+                        Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+                        at {{user_res.time}} has been updated.
+                    </p>
+                </div>
+                {% else %}
+                <div class="message">
+                    <p>
+                        Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+                        at {{user_res.time}} is confirmed.
+                    </p>
+                </div>
+                {% endif %}
             <div class="links">
                 <a href="{% url 'edit_reservation' reservation_id None%}">
                     <button class="btn btn-sm custom-btn">
@@ -28,29 +37,31 @@
                     Sorry {{user.name}}, {{error}}
                 </p>
             </div>
-            {% if diff_hour %}
-            <div>
-                <p>
-                    Do you want to make two reservations for the same day?
-                </p>
-                <a href="{% url 'edit_reservation' reservation_id new_time %}">
-                    <button class="btn btn-sm custom-btn">
-                        Yes
-                    </button>
-                </a>
-                <button class="btn btn-sm custom-btn delete">
-                    No
-                </button>
-            </div>
-            {% else %}
-            <div>
-                <a href="{% url 'edit_reservation' reservation_id new_time%}">
-                    <button class="btn btn-sm custom-btn">
-                        Your reservation
-                    </button>
-                </a>
-            </div>
-            {% endif %}
+                {% if diff_hour %}
+                <div>
+                    <p>
+                        Do you want to make two reservations for the same day?
+                    </p>
+                    <a href="{% url 'edit_reservation' reservation_id new_time %}">
+                        <button class="btn btn-sm custom-btn">
+                            Yes
+                        </button>
+                    </a>
+                    <a href="{% url 'reservation_form' %}">
+                        <button class="btn btn-sm custom-btn delete">
+                            No
+                        </button>
+                    </a>
+                </div>
+                {% else %}
+                <div>
+                    <a href="{% url 'edit_reservation' reservation_id new_time%}">
+                        <button class="btn btn-sm custom-btn">
+                            Your reservation
+                        </button>
+                    </a>
+                </div>
+                {% endif %}
             {% endif %}
         </div>
     </div>
