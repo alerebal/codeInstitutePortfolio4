@@ -1,4 +1,5 @@
 """Restaurant reservation hours"""
+
 lunch = [
     ('12:00', '12:00'),
     ('12:30', '12:30'),

@@ -42,6 +42,22 @@ class TestReservationForm(TestCase):
         self.assertIn('email', form.errors.keys())
         self.assertEqual(form.errors['email'][0], 'This field is required.')
 
+    def test_guests_cant_be_negative(self):
+        """ Check that the cuantity of guests can't be negative """
+        form = ReservationForm({'guests': -2})
+        self.assertFalse(form.is_valid())
+        self.assertIn('guests', form.errors.keys())
+        self.assertEqual(form.errors['guests'][0],
+                         'Ensure this value is greater than or equal to 0.')
+
+    def test_guests_cant_be_greater_than_10(self):
+        """ Check that the cuantity of guests can't be greater than 10 """
+        form = ReservationForm({'guests': 11})
+        self.assertFalse(form.is_valid())
+        self.assertIn('guests', form.errors.keys())
+        self.assertEqual(form.errors['guests'][0],
+                         'Ensure this value is less than or equal to 10.')
+
     def test_phone_is_not_required(self):
         """ Check that the phone is not required """
         form = ReservationForm({
