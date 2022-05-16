@@ -6,7 +6,9 @@ from .models import Reservation, Item, Menu
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
     """ Reservation Admin class"""
-    list_filter = ('name', 'email')
+    list_filter = ('email', 'last_name')
+    date_hierarchy = 'date'
+    list_display = ('name', 'last_name', 'email', 'time', 'guests')
 
 
 @admin.register(Item)

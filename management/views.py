@@ -2,6 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import ReservationForm
 from .models import Reservation, Menu
+from .helpers import admin_msg_ocupation
 
 
 def home(request):
@@ -95,14 +96,19 @@ def reservation_form_view(request):
     return render(request, 'reservation_form.html', context)
 
 
-def is_room_available(date, time, guests, room=30):
+def is_room_available(date, time, guests, room=10):
     """ Checking for room availability, default 30 people is full room """
     reservations = Reservation.objects.filter(date=date, time=time)
     total_people = 0
+    seventy_five_percent = room * 75 / 100
     for res in reservations:
         total_people += res.guests
     total_people += int(guests)
-    return total_people < room
+    if total_people > seventy_five_percent and total_people < room:
+        # if the seventy five percent of the restaurant is ocupated
+        # a message must be sent to the admin
+        print(admin_msg_ocupation(date, time))
+    return total_people <= room
 
 
 def edit_reservation(request, reservation_id, new_time):

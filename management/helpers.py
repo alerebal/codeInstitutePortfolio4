@@ -31,3 +31,13 @@ menu_kind = [
     ('dessert', 'Dessert'),
     ('drink', 'Drink'),
 ]
+
+
+def admin_msg_ocupation(date, time):
+    """
+    Funtion to send a msg to the admin when the restaurant is 75% ocupated
+    for this project won't be fully implemented
+    """
+    msg = f'The restaurant is full on {date} at {time}'
+    # here goes all the logic for email
+    return msg
