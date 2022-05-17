@@ -5,17 +5,26 @@
         <form method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <p>
+            <div class="form-options">
                 <button type="submit" class="btn btn-sm custom-btn">
-                    Update
+                    Update reservation
                 </button>
-            </p>
+                <div id="delete-buttons">
+                    <div class="text-danger">You reservation will be canceled. Are you sure?</div>
+                    <div id="delete-options">
+                        <a href="{% url 'delete_reservation' reservation_id %}" class="text-danger">
+                                Yes
+                        </a>
+                        <a href="#" onclick="location.reload()" class="text-success">
+                                No
+                        </a>
+                    </div>
+                </div>
+                <button id="delete-reservation" type="button" class="btn btn-danger btn-sm">
+                    Cancel reservation
+                </button>
+            </div>
         </form>
-        <button class="btn btn-danger btn-sm">
-            <a href="{% url 'delete_reservation' reservation_id %}">
-                Delete
-            </a>
-        </button>
     </div>
 </div>
 {% endblock content %}

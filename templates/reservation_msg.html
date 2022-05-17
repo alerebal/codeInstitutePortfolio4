@@ -4,7 +4,14 @@
     <div class="col-sm-12 col-md-8 col-md-6 text-center mx-auto mt-5">
         <div class="row  mt-5 msg">
             {% if user_res %}
-                {% if updated %} 
+                {% if deleted %}
+                <div class="message">
+                    <p>
+                        Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
+                        at {{user_res.time}} has been canceled, we hope to see you soon.
+                    </p>
+                </div>
+                {% elif updated %}
                 <div class="message">
                     <p>
                         Thanks {{user_res.name}}, your reservation for the day {{user_res.date}}
@@ -20,6 +27,13 @@
                 </div>
                 {% endif %}
             <div class="links">
+                {% if deleted %}
+                <a href="{% url 'home' %}">
+                    <button class="btn btn-sm custom-btn">
+                        Go to Home page
+                    </button>
+                </a>
+                {% else %}
                 <a href="{% url 'edit_reservation' reservation_id None%}">
                     <button class="btn btn-sm custom-btn">
                         Your reservation
@@ -30,6 +44,7 @@
                         Go to Home page
                     </button>
                 </a>
+                {% endif %}
             </div>
             {% else %}
             <div class="message">

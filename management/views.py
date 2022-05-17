@@ -154,8 +154,15 @@ def edit_reservation(request, reservation_id, new_time):
 def delete_reservation(request, reservation_id):
     """ Delete a reservation """
     reservation = get_object_or_404(Reservation, id=reservation_id)
+    context = {
+        'user_res': reservation,
+        'reservation_id': reservation.pk,
+        'deleted': True,
+        'new_time': None
+    }
     reservation.delete()
-    return redirect('home')
+    # return redirect('home')
+    return render(request, 'reservation_msg.html', context)
 
 
 # Menus ////////////////////////////////////////////

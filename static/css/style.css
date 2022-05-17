@@ -90,7 +90,29 @@ form button {
     color: var(--cl-neutral)
 }
 
-/* messages */
+/* Edit reservation */
+.form-options {
+    text-align: center;
+    margin: 2em;
+}
+
+.form-options button {
+    margin: 1em;
+}
+
+#delete-buttons {
+    display: flex;
+    justify-content: space-around;
+    padding: 1em;
+}
+
+#delete-options {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+
+/* Messages */
 .msg-container {
     height: 100vh;
     background-image: url('../img/spinach_1920.jpg');
@@ -107,6 +129,7 @@ form button {
     font-size: large;
     border-radius: 10px;
 }
+
 
 
 /* Footer */
