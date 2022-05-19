@@ -1,5 +1,5 @@
 """ Management Views """
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .forms import ReservationForm, EmailInputForm
 from .models import Reservation, Menu
 from .helpers import admin_msg_ocupation
@@ -8,7 +8,7 @@ from .helpers import admin_msg_ocupation
 # Home //////////////////////////////////////////////////////////
 
 
-def home(request):
+def home(request, user_email=None):
     """ Home page """
     if request.method == 'POST':
         form = EmailInputForm(request.POST)
@@ -21,7 +21,6 @@ def home(request):
                     'form': form,
                     'name': reservations[0].name,
                     'qty': len(reservations),
-                    'index': reservations[0].pk
                 }
                 return render(request, 'home.html', context)
             else:
@@ -36,9 +35,18 @@ def home(request):
             }
             return render(request, 'home.html', context)
     form = EmailInputForm()
-    context = {
-        'form': form
-    }
+    reservations = Reservation.objects.filter(email=user_email)
+    if reservations:
+        context = {
+                    'reservations': reservations,
+                    'form': form,
+                    'name': reservations[0].name,
+                    'qty': len(reservations),
+                }
+    else:
+        context = {
+            'form': form,
+        }
     return render(request, 'home.html', context)
 
 

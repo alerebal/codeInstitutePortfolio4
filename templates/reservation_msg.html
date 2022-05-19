@@ -28,7 +28,7 @@
                 {% endif %}
             <div class="links">
                 {% if deleted %}
-                <a href="{% url 'home' %}">
+                <a href="{% url 'user_home' user_res.email %}">
                     <button class="btn btn-sm custom-btn">
                         Go to Home page
                     </button>
@@ -39,7 +39,7 @@
                         Your reservation
                     </button>
                 </a>
-                <a href="{% url 'home' %}">
+                <a href="{% url 'user_home' user_res.email %}">
                     <button class="btn btn-sm custom-btn">
                         Go to Home page
                     </button>

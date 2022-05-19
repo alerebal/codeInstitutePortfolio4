@@ -21,6 +21,7 @@ from management.views import (reservation_form_view, home, edit_reservation,
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
+    path('home/<user_email>/', home, name='user_home'),
     path('reservation_form/', reservation_form_view, name='reservation_form'),
     path('edit_reservation/<reservation_id>/<new_time>', edit_reservation,
          name='edit_reservation'),

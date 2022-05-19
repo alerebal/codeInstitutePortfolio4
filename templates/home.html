@@ -4,7 +4,7 @@
     <div class="row reservations-content">
         <div class="col-sm-12 col-md-6 col-lg-8 info text-center">
             {% if msg %}
-            <p class="lead text-success">{{ msg }}</p>
+            <p class="lead content">{{ msg }}</p>
             {% endif %}
             {% if reservations %}
             <div class="home-reservations content text-center">
@@ -16,6 +16,7 @@
                     {% endif %}
                 </p>
                 <ul>
+                    <hr>
                     {% for res in reservations %}
                     <li>On {{res.date}} at {{res.time}} for 
                         {% if res.guests > 1 %}
@@ -24,7 +25,8 @@
                         {{res.guests}} guest
                         {% endif %}
                     </li>
-                    <a href="#">Edit</a>
+                    <a href="{% url 'edit_reservation' res.pk None %}">Update or cancel the reservation</a>
+                    <hr>
                     {% endfor %}
                 </ul>
             </div>

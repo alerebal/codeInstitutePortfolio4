@@ -2,7 +2,7 @@
     --cl-primary: rgb(95, 108, 62);
     --cl-secondary: rgb(90,152,43);
     --cl-neutral: rgb(220, 213, 210);
-    --cl-neutral-transparent: rgba(0, 0, 0, 0.76);
+    --cl-neutral-transparent: rgba(0, 0, 0, 0.9);
 }
 
 /* General */
@@ -14,6 +14,14 @@ body {
 
 a {
     text-decoration: none;
+    color: var(--cl-neutral);
+    transition: ease-in-out 150ms;
+}
+
+a:hover {
+    color: currentColor;
+    opacity: .5;
+    transition: ease-in-out 150ms;
 }
 
 li {
@@ -31,7 +39,7 @@ main {
 
 /* Home */
 .home-container {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('../img/dark-food-1920.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -94,8 +102,6 @@ form p {
 form input, select {
     border-radius: 5px;
     border: var(--cl-primary) 2px solid;
-    background-color: var(--cl-neutral-transparent);
-    color: var(--cl-primary);
 }
 
 form button {
