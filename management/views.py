@@ -1,13 +1,45 @@
 """ Management Views """
 from django.shortcuts import render, get_object_or_404, redirect
-from .forms import ReservationForm
+from .forms import ReservationForm, EmailInputForm
 from .models import Reservation, Menu
 from .helpers import admin_msg_ocupation
 
 
+# Home //////////////////////////////////////////////////////////
+
+
 def home(request):
     """ Home page """
-    return render(request, 'home.html')
+    if request.method == 'POST':
+        form = EmailInputForm(request.POST)
+        if form.is_valid():
+            reservations = Reservation.objects.filter(
+                email=request.POST['email'])
+            if len(reservations) > 0:
+                context = {
+                    'reservations': reservations,
+                    'form': form,
+                    'name': reservations[0].name,
+                    'qty': len(reservations),
+                    'index': reservations[0].pk
+                }
+                return render(request, 'home.html', context)
+            else:
+                context = {
+                    'form': form,
+                    'msg': "You don't have any reservation yet"
+                }
+                return render(request, 'home.html', context)
+        else:
+            context = {
+                'form': form,
+            }
+            return render(request, 'home.html', context)
+    form = EmailInputForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'home.html', context)
 
 
 # Reservations //////////////////////////////////////////////////
@@ -161,7 +193,6 @@ def delete_reservation(request, reservation_id):
         'new_time': None
     }
     reservation.delete()
-    # return redirect('home')
     return render(request, 'reservation_msg.html', context)
 
 

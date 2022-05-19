@@ -15,3 +15,8 @@ class ReservationForm(forms.ModelForm):
         widgets = {
             'date': DatePickerInput()
         }
+
+
+class EmailInputForm(forms.Form):
+    """ Input model form """
+    email = forms.EmailField(label='Em@il')

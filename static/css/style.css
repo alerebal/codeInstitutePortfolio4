@@ -38,6 +38,16 @@ main {
     background-size: cover;
 }
 
+.reservations-content {
+    margin: 7em 2em;
+}
+
+.form-input {
+    padding: 0;
+    color: var(--cl-primary);
+    border: none;
+}
+
 /* Display menus */
 .display-container {
     height: 100vh;
@@ -70,6 +80,7 @@ form {
     margin: 2em;
     border: 2px solid var(--cl-neutral);
     border-radius: 10px;
+    border: var(--cl-primary) 2px solid;
 }
 
 form p {
@@ -78,6 +89,13 @@ form p {
     width: 70%;
     margin: 0 auto;
     margin-top: 1em;
+}
+
+form input, select {
+    border-radius: 5px;
+    border: var(--cl-primary) 2px solid;
+    background-color: var(--cl-neutral-transparent);
+    color: var(--cl-primary);
 }
 
 form button {
