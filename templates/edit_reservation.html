@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="row form-container">
+    {% if duplicated %}
+    <div class="row message text-center mt-5">
+        <p class="msg">
+            You already have a reservation at {{user_res.date}} at {{user_res.time}}
+        </p>
+    </div>
+    {% endif %}
     <div class="col-sm-12 col-md-8 col-lg-6 mx-auto mt-5">
         <form method="POST">
             {% csrf_token %}

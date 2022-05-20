@@ -88,7 +88,7 @@ def reservation_form_view(request):
                     if form.is_valid():
                         form.save()
                         reservations = Reservation.objects.filter(
-                            email=request.POST['email'])
+                                       email=request.POST['email'])
                         reservation = reservations[len(reservations)-1]
                         context = {
                             'user_res': reservation,
@@ -151,24 +151,49 @@ def is_room_available(date, time, guests, room=10):
     return total_people <= room
 
 
+def check_duplicated_reservations(date, time, email):
+    """ Check a reservation to see if the user has already another reservation
+        at same day and time
+    """
+    reservations = Reservation.objects.filter(email=email)
+    same_time = False
+    for reser in reservations:
+        if str(reser.date) == date and reser.time == time:
+            same_time = True
+    return same_time
+
+
 def edit_reservation(request, reservation_id, new_time):
     """ Form to edit the reservation or confirm two reservations at same day"""
     reservation = get_object_or_404(Reservation, id=reservation_id)
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            form.save()
-            context = {
-                'user_res': reservation,
-                'reservation_id': reservation.pk,
-                'new_time': new_time,
-                'updated': True
-            }
-            return render(request, 'reservation_msg.html', context)
+            is_duplicated = check_duplicated_reservations(request.POST['date'],
+                                                          request.POST['time'],
+                                                          request.POST['email']
+                                                          )
+            if is_duplicated:
+                context = {
+                    'form': form,
+                    'user_res': reservation,
+                    'duplicated': is_duplicated,
+                    'reservation_id': reservation.pk
+                }
+                return render(request, 'edit_reservation.html', context)
+            else:
+                form.save()
+                context = {
+                    'user_res': reservation,
+                    'reservation_id': reservation.pk,
+                    'new_time': new_time,
+                    'updated': True
+                }
+                return render(request, 'reservation_msg.html', context)
         else:
             context = {
                 'form': form
-            }
+                }
             return render(request, 'reservation_form.html',
                           context)
 
