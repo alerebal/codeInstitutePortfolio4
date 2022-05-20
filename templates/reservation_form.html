@@ -8,6 +8,19 @@
             </p>
         </div>
     {% endif %}
+    {% if two_reservations %}
+        <div class="row message text-center mt-5">
+            <p class="msg">
+                You have already two reservation for this day.<br>
+                If you want to get more than two reservations for a same day please contact us.<br><br>
+                <a href="{% url 'user_home' email %}">
+                    <button class="btn btn-sm custom-btn">
+                        See your reservations
+                    </button>
+                </a>
+            </p>
+        </div>
+    {% endif %}
         <div class="col-sm-12 col-md-8 col-lg-6 mx-auto mt-5">
             <form action="{% url 'reservation_form' %}" method="POST">
                 {% csrf_token %}

@@ -76,7 +76,17 @@ def reservation_form_view(request):
                 if len(resers) > 0:
                     # User has already reservations
                     for reser in resers:
-                        if str(reser.date) == str(request.POST['date']):
+                        if str(reser.date) == request.POST['date']:
+                            reservations = Reservation.objects.filter(
+                                           date=reser.date)
+                            if len(reservations) > 1:
+                                context = {
+                                    'form': form,
+                                    'two_reservations': True,
+                                    'email': reser.email
+                                }
+                                return render(request, 'reservation_form.html',
+                                              context)
                             # same day, different time
                             if str(reser.time) != str(request.POST['time']):
                                 diff_hour = True
