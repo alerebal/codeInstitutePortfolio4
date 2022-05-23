@@ -1,7 +1,18 @@
 """ Managment Models """
+import datetime
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import (MaxValueValidator, MinValueValidator,
+                                    ValidationError)
 from .helpers import lunch, dinner, menu_kind
+
+
+def validate_date(date):
+    """
+    Checking if the day chosen is in the past, if it is, raise an error
+    """
+    if date < datetime.date.today():
+        raise ValidationError("The date cannot be in the past!")
+    return date
 
 
 class Reservation(models.Model):
@@ -10,7 +21,8 @@ class Reservation(models.Model):
                                          validators=[MinValueValidator(1),
                                                      MaxValueValidator(10)])
     time_options = lunch + dinner
-    date = models.DateField()
+    date = models.DateField(default=datetime.date.today,
+                            validators=[validate_date])
     time = models.CharField(max_length=30,
                             choices=time_options,
                             default='12:00')

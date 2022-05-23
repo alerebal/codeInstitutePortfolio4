@@ -9,7 +9,7 @@
 body {
     background-color: black;
     overflow-x: hidden;
-    color: var(--cl-neutral)
+    color: var(--cl-neutral);
 }
 
 a {
@@ -112,6 +112,15 @@ form button {
 .custom-btn {
     background-color: var(--cl-primary);
     color: var(--cl-neutral)
+}
+
+/* Django error list */
+.errorlist {
+    text-align: center;
+    background-color: var(--cl-neutral-transparent);
+    color: var(--cl-primary);
+    margin-top: 1em;
+    border-radius: 5px;
 }
 
 /* Edit reservation */

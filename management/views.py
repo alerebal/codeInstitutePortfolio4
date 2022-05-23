@@ -146,7 +146,7 @@ def reservation_form_view(request):
     return render(request, 'reservation_form.html', context)
 
 
-def is_room_available(date, time, guests, room=10):
+def is_room_available(date, time, guests, room=30):
     """ Checking for room availability, default 30 people is full room """
     reservations = Reservation.objects.filter(date=date, time=time)
     total_people = 0
