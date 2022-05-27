@@ -62,7 +62,7 @@ class TestReservationForm(TestCase):
         """ Check that the phone is not required """
         form = ReservationForm({
             'guests': 1,
-            'date': '2022-05-08',
+            'date': '2022-06-08',
             'time': '14:30',
             'name': 'A Name',
             'last_name': 'Some Last Name',

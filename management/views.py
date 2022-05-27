@@ -250,5 +250,4 @@ def display_menu(request, kind):
         'menu': menu,
         'items': [items]
     }
-    print(items)
     return render(request, 'display_menu.html', context)

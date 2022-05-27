@@ -27,5 +27,5 @@ urlpatterns = [
          name='edit_reservation'),
     path('delete_reservation/<reservation_id>', delete_reservation,
          name='delete_reservation'),
-    path('display_menu/<kind>', display_menu, name='display_menu'),
+    path('display_menu/<kind>/', display_menu, name='display_menu'),
 ]
