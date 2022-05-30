@@ -40,7 +40,7 @@ main {
 /* Home */
 .home-container {
     min-height: 100vh;
-    background-image: url('../img/dark-food-1920-2.jpg');
+    background-image: url('/img/dark-food-1920-2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -148,7 +148,7 @@ form button {
 /* Messages */
 .msg-container {
     height: 100vh;
-    background-image: url('../img/spinach_1920-2.jpg');
+    background-image: url('img/spinach_1920-2.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
