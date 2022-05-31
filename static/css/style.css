@@ -40,7 +40,7 @@ main {
 /* Home */
 .home-container {
     min-height: 100vh;
-    background-image: url('../img/dark-food-1920-2.jpg');
+    background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903572/static/img/dark-food-1920-2.0d26eaca11e1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -59,7 +59,7 @@ main {
 /* Display menus */
 .display-container {
     height: 100vh;
-    background-image: url('../img/cilantro-1920-2.jpg');
+    background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903570/static/img/cilantro-1920-2.8b1f343a3323.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;   
@@ -77,7 +77,7 @@ main {
 /* Forms */
 .form-container {
     height: 100vh;
-    background-image: url('../img/parsely-1920-2.jpg');
+    background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903573/static/img/parsely-1920-2.11d354d06e36.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -148,7 +148,7 @@ form button {
 /* Messages */
 .msg-container {
     height: 100vh;
-    background-image: url('img/spinach_1920-2.jpg');
+    background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903571/static/img/spinach_1920-2.7bb28f40d3ab.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
