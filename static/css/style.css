@@ -19,7 +19,7 @@ body {
 
 a {
     text-decoration: none;
-    color: var(--cl-neutral);
+    color: var(--cl-primary);
     transition: ease-in-out 150ms;
     font-family: var(--ff-secondary);
 }
@@ -41,7 +41,7 @@ main {
 
 .content {
     background-color: var(--cl-neutral-transparent);
-    color: var(--cl-secondary);
+    color: var(--cl-primary);
     font-weight: 900;
     font-size: 1.3em;
     border-radius: 10px;
@@ -64,11 +64,20 @@ main {
 
 .home-text {
     position: absolute;
-    bottom: 10%;
+    bottom: 20%;
     left: 10%;
-    font-size: 2.3em;
+    font-size: 7em;
     font-weight: 900;
-    /* color: var(--cl-neutral); */
+    color: var(--cl-primary);
+    text-shadow: 0 0 5px var(--cl-neutral-transparent);
+}
+
+.home-reservartion-link {
+    position: absolute;
+    padding: 1em 2em;
+    right: 20%;
+    bottom: 10%;
+    border: 1px solid var(--cl-primary);
 }
 
 .reservations-content {
@@ -92,11 +101,12 @@ main {
 
 /* Forms */
 .form-container {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903573/static/img/parsely-1920-2.11d354d06e36.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    margin-top: 2em;
 }
 
 form {
@@ -181,6 +191,18 @@ form button {
     border-radius: 10px;
 }
 
-
-
 /* Footer */
+footer {
+    box-shadow: 0px 0px 30px 30px var(--cl-neutral-transparent);
+}
+
+.media {
+    padding: 2em;
+}
+
+.media-links {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    font-size: 2em;
+}

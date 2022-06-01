@@ -41,16 +41,23 @@
                 {{ form.as_p }}
                 <p>
                     <button class="btn btn-sm custom-btn">
-                        Send
+                        Enter
                     </button>
                 </p>
             </form>
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-8 col-lg-6">
-                <h2 class="home-text content ">
-                    Healthy food for a longer and better life
+                <h2 class="home-text">
+                    Welcome
                 </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-6 col-lg-4">
+                <a href="{% url 'reservation_form' %}" class="home-reservartion-link content">
+                    Book a table
+                </a>
             </div>
         </div>
     </div>
