@@ -2,7 +2,7 @@
 {% block content %}
 <div class="container-fluid home-container">
     <div class="row reservations-content">
-        <div class="col-sm-12 col-md-6 col-lg-8 info">
+        <div class="col-sm-12 col-md-6 col-lg-8 mx-auto mt-5 info">
             {% if msg %}
             <p class="lead content">{{ msg }}</p>
             {% endif %}
@@ -30,7 +30,7 @@
                     {% endfor %}
                 </ul>
             </div>
-            {% endif %}
+            {% else %}
         </div>
         <div class="col-sm-12 col-md-6 col-lg-4 email-user">
             <p class="text-center">
@@ -60,6 +60,7 @@
                 </a>
             </div>
         </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
