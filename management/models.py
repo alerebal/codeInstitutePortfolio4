@@ -70,3 +70,16 @@ class Menu(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+
+
+class Message(models.Model):
+    """ Message model """
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    subject = models.CharField(max_length=50, null=True, blank=True)
+    message = models.TextField(max_length=500)
+    date = models.DateField(auto_now_add=True)
+    is_answered = models.BooleanField(default=False)
+
+    def __str__(self):
+        return f'{self.name} - {self.date} - Answered: {self.is_answered}'

@@ -1,6 +1,6 @@
 """ Management Forms """
 from django import forms
-from .models import Reservation
+from .models import Reservation, Message
 from .widgets import DatePickerInput
 
 
@@ -20,3 +20,12 @@ class ReservationForm(forms.ModelForm):
 class EmailInputForm(forms.Form):
     """ Input model form """
     email = forms.EmailField(label='Em@il')
+
+
+class ContactForm(forms.ModelForm):
+    """ Message model form """
+
+    class Meta:
+        """ Meta of Contact form """
+        model = Message
+        fields = ('name', 'email', 'subject', 'message')

@@ -1,7 +1,7 @@
 """ Management Views """
-from django.shortcuts import render, get_object_or_404
-from .forms import ReservationForm, EmailInputForm
-from .models import Reservation, Menu
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import ReservationForm, EmailInputForm, ContactForm
+from .models import Reservation, Menu, Message
 from .helpers import admin_msg_ocupation
 
 
@@ -251,3 +251,31 @@ def display_menu(request, kind):
         'items': [items]
     }
     return render(request, 'display_menu.html', context)
+
+
+# Contact form /////////////////////////////////////
+
+
+def contact_form(request):
+    """ Contact form """
+    if request.method == 'POST':
+        form = ContactForm()
+        msg = Message.objects.create(
+            name=request.POST['name'],
+            email=request.POST['email'],
+            subject=request.POST['subject'],
+            message=request.POST['message']
+        )
+        msg.save()
+        context = {
+            'msg': 'your message has been sent',
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'form': form
+        }
+        return render(request, 'contact_form.html', context)
+    form = ContactForm()
+    context = {
+        'form': form
+    }
+    return render(request, 'contact_form.html', context)

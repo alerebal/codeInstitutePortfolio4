@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from management.views import (reservation_form_view, home, edit_reservation,
-                              delete_reservation, display_menu)
+                              delete_reservation, display_menu, contact_form)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,4 +28,5 @@ urlpatterns = [
     path('delete_reservation/<reservation_id>', delete_reservation,
          name='delete_reservation'),
     path('display_menu/<kind>/', display_menu, name='display_menu'),
+    path('contact_form/', contact_form, name='contact_form')
 ]

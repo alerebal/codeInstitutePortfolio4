@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row form-container">
+    {% if msg %}
+    <div class="col-sm-12 col-md-8 col-md-6 text-center mx-auto mt-5 message">
+        <div class="row mt-5 msg">
+            <p>Thanks {{name}}, {{msg}}</p>
+            <div class="links">
+                <a href="{% url 'user_home' email %}">
+                    <button class="btn btn-sm custom-btn">
+                        Go to Home page
+                    </button>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-sm-12 col-md-8 col-lg-6 mx-auto mt-5">
+        <form action="{% url 'contact_form' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p>
+                <button type="submit" class="btn btn-sm custom-btn">
+                    Send
+                </button>
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock content %}
