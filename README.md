@@ -48,4 +48,32 @@ If they accept, the reservation will be saved, if not, they will be sent to the 
 
 ![Two reservations at same day](static/img/readme/pages/two-reservations.png)
 
+## Testing
+
+### Validator Testing
+
+#### HTML
+
+- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
+
+
+
+#### CSS
+
+- No errors were found when passing through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator)
+
+
+
+##### Gave me some warnings about font-awesome and Bootstrap URI
+
+
+### The app has been deployed in Heroku.
+
+Once I finished to set all the variables I had to configure in the settings file(Postgres, Cloudinary and different more variables), create a requirements.txt, set enviroment variables and a Procfile file, the project was ready to deployed.
+
+I created a new app on Heroku and pushed the project to GitHub. But currently it is not possible to connect GitHub to Heroku, so I had to do the deployment from the terminal.
+
+I used the command `heroku login -i` to enter my credentials, then linked the local project to the Heroku app with the command `heroku git:remote -my heroku app-`. After that I just used `git push heroku main` to deploy the app to Heroku.
+
+
 
