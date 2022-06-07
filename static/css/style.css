@@ -169,7 +169,8 @@ form button {
 #delete-buttons {
     display: flex;
     justify-content: space-around;
-    padding: 1em;
+    gap: 1em;
+    margin-top: .3em;
 }
 
 #delete-options {

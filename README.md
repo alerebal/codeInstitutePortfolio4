@@ -1,6 +1,6 @@
 # Vegan Restaurant
 
-Vegan restaurant page using Django for my fourth milestone project at Code Institute.
+Vegan restaurant page using Django for my fourth milestone project at Code Institute. I have used Postgres as database and Cloudinary to stored the images.
 
 Users can make a reservation for a meal from 1 to 10 guests, once it is reserved, modify or cancel it if they want as well. If they already have any reservation, they can access it(or them if more than one) using their email.
 
@@ -48,13 +48,55 @@ If they accept, the reservation will be saved, if not, they will be sent to the 
 
 ![Two reservations at same day](static/img/readme/pages/two-reservations.png)
 
+If the user wants to delete a reservation, an alert will be displayed.
+
+![Delete reservation alert](static/img/readme/videos/delete-reservation-alert.gif)
+
+If user delete the reservation a message will be shown.
+
+![After delete reservation](static/img/readme/pages/after-delete-reservation.png)
+
+### Menus
+
+Three menus can be displayed. They are accessible from the navigation bar. The following is one of them.
+
+![Desserts menu](static/img/readme/pages/list-display-desserts.png)
+
+### Admin panel
+
+The admin can manage the restaurant from the django admin panel.
+
+Reservations panel with users email and last name filter, in which they can select reservations by day, month or year as well.
+
+![reservation panel](static/img/readme/admin/admin-reservations.png)
+
+Items menu panel, from they can modify or add more items.
+
+![items panel](static/img/readme/admin/admin-menu-items.png)
+
+![add item panel](static/img/readme/admin/admin-add-item.png)
+
+Menus panel with the different menus from where they can add more menus or add items to them.
+
+![menus panel](static/img/readme/admin/admin-menus.png)
+
+![add or update menu](static/img/readme/admin/admin-menu-selection.png)
+
+Messages panel in which admin can see all the messages that have been sent, the date of them and if they have been answered.
+
+![messages panel](static/img/readme/admin/admin-messages.png)
+
+## Features Left to Implemnt
+
+The admin must be able to answer the users messages from the admin panel.
+
 ## Testing
 
 ### Validator Testing
 
 #### HTML
 
-- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
+No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
 
 
 
@@ -74,6 +116,22 @@ Once I finished to set all the variables I had to configure in the settings file
 I created a new app on Heroku and pushed the project to GitHub. But currently it is not possible to connect GitHub to Heroku, so I had to do the deployment from the terminal.
 
 I used the command `heroku login -i` to enter my credentials, then linked the local project to the Heroku app with the command `heroku git:remote -my heroku app-`. After that I just used `git push heroku main` to deploy the app to Heroku.
+
+## Resourses
+
+### Content
+
+#### The background images were taken from 
+
+Pixabay - https://pixabay.com/ 
+
+#### Some of the menus items were taken from
+
+Cornucopia - https://cornucopia.ie/
+
+#### The images of the media buttons were taken from
+
+Font Awesome - https://fontawesome.com/
 
 
 
