@@ -161,7 +161,7 @@ def is_room_available(date, time, guests, room=30):
     return total_people <= room
 
 
-def check_duplicated_reservations(date, time, email):
+def check_duplicated_reservations(date, time, email, guests):
     """ Check a reservation to see if the user has already another reservation
         at same day and time
     """
@@ -169,6 +169,9 @@ def check_duplicated_reservations(date, time, email):
     same_time = False
     for reser in reservations:
         if str(reser.date) == date and reser.time == time:
+            # if user is trying to change guests quantity
+            if reser.guests != guests:
+                return same_time
             same_time = True
     return same_time
 
@@ -179,9 +182,11 @@ def edit_reservation(request, reservation_id, new_time):
     if request.method == 'POST':
         form = ReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            is_duplicated = check_duplicated_reservations(request.POST['date'],
-                                                          request.POST['time'],
-                                                          request.POST['email']
+            r_p = request.POST
+            is_duplicated = check_duplicated_reservations(r_p['date'],
+                                                          r_p['time'],
+                                                          r_p['email'],
+                                                          r_p['guests']
                                                           )
             if is_duplicated:
                 context = {

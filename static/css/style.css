@@ -92,11 +92,16 @@ main {
 
 /* Display menus */
 .display-container {
-    height: 100vh;
+    min-height: 100vh;
     background-image: url('https://res.cloudinary.com/alerebal/image/upload/v1653903570/static/img/cilantro-1920-2.8b1f343a3323.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;   
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
 }
 
 /* Forms */

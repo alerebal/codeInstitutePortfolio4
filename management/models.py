@@ -45,7 +45,7 @@ class Item(models.Model):
 
     class Meta:
         """ Item meta class """
-        ordering = ['name']
+        ordering = ['kind']
 
     def __str__(self):
         return f"{self.name} - Price: {self.price} - {self.kind}"
