@@ -2,14 +2,14 @@
 {% block content %}
 <div class="row form-container ">
     {% if no_room %}
-        <div class="row message text-center mt-5">
+        <div class="col-sm-10 col-md-8 text-center mx-auto  message mt-5">
             <p class="msg">
                 Unfortunately there is no reservations available for that time. Please choose another time.
             </p>
         </div>
     {% endif %}
     {% if two_reservations %}
-        <div class="row message text-center mt-5">
+        <div class="col-sm-10 col-md-8 text-center mx-auto  message mt-5">
             <p class="msg">
                 You have already two reservation for this day.<br>
                 If you want to get more than two reservations for a same day please contact us.<br><br>

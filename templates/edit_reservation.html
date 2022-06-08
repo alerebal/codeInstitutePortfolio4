@@ -2,7 +2,7 @@
 {% block content %}
 <div class="row form-container">
     {% if duplicated %}
-    <div class="row message text-center mt-5">
+    <div class="col-sm-10 col-md-8 text-center mx-auto message mt-5">
         <p class="msg">
             You already have a reservation at {{user_res.date}} at {{user_res.time}}
         </p>
@@ -27,7 +27,7 @@
                         </a>
                     </div>
                 </div>
-                <button id="delete-reservation" type="button" class="btn btn-danger btn-sm">
+                <button id="delete-reservation" type="button" class="btn btn-sm custom-btn cancel-btn">
                     Cancel reservation
                 </button>
             </div>
