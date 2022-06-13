@@ -1,5 +1,5 @@
 """ Management Views """
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from .forms import ReservationForm, EmailInputForm, ContactForm
 from .models import Reservation, Menu, Message
 from .helpers import admin_msg_ocupation

@@ -90,26 +90,55 @@ Messages panel in which admin can see all the messages that have been sent, the 
 
 The admin must be able to answer the users messages from the admin panel.
 
+When the user is trying to get a reservation, the calendar shows all the days of the month, even if they are already pass. It would be nice to make them disabled.
+
 ## Testing
 
 ### Validator Testing
 
 #### HTML
 
-No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
+- No errors were returned when passing through the official [W3C validator](https://validator.w3.org/nu/)
 
-
+![Html validator](static/img/readme/tests/home-html.png)
 
 #### CSS
 
 - No errors were found when passing through the official [Jigsaw validator](https://jigsaw.w3.org/css-validator)
 
+![Css validator](static/img/readme/tests/css.png)
 
+    - Gave me some warnings about font-awesome and Bootstrap URI
 
-##### Gave me some warnings about font-awesome and Bootstrap URI
+#### Python
 
+- All the files pass the [PEP8](http://pep8online.com/) test successfully.
 
-### The app has been deployed in Heroku.
+- views.py, moderls.py and forms.py as example
+
+![Python validator views](static/img/readme/tests/pep8-views.png)
+
+![Python validator models](static/img/readme/tests/pep8-models.png)
+
+![Python validator forms](static/img/readme/tests/pep8-forms.png)
+
+#### JS
+
+- No errors were found when passing through the official [JsHint validator](https://jshint.com/)
+
+![JS validator](static/img/readme/tests/js-hint.png)
+
+### Lighthouse Testing
+
+![LH home](static/img/readme/tests/lh-home.png)
+
+![LH menus](static/img/readme/tests/lh-display-menu.png)
+
+![LH reservation form](static/img/readme/tests/lh-reservation-form.png)
+
+![LH contact](static/img/readme/tests/lh-contact.png)
+
+## The app has been deployed in Heroku.
 
 Once I finished to set all the variables I had to configure in the settings file(Postgres, Cloudinary and different more variables), create a requirements.txt, set enviroment variables and a Procfile file, the project was ready to deployed.
 
@@ -119,19 +148,53 @@ I used the command `heroku login -i` to enter my credentials, then linked the lo
 
 ## Resourses
 
+### Used libraries
+
+[DJ-Database-URL](https://libraries.io/pypi/dj-database-url)
+
+I used this library to set the app to connect with PostgreSQL
+
+This simple Django utility allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
+
+The dj_database_url.config method returns a Django database connection dictionary, populated with all the data specified in your URL. There is also a conn_max_age argument to easily enable Django's connection pool.
+
+If you'd rather not use an environment variable, you can pass a URL in directly instead to dj_database_url.parse.
+
+[Cloudinary Storage](https://pypi.org/project/dj3-cloudinary-storage/)
+
+I used this library to integrate Cloudinary into the project.
+
+Django Cloudinary Storage is a Django package that facilitates integration with Cloudinary by implementing Django Storage API. With several lines of configuration, you can start using Cloudinary for both media and static files. Also, it provides management commands for removing unnecessary files, so any cleanup will be a breeze. It uses pycloudinary package under the hood.
+
+[Gunicorn](https://pypi.org/project/gunicorn/#:~:text=Gunicorn%20'Green%20Unicorn'%20is%20a,resource%20usage%2C%20and%20fairly%20speedy.)
+
+It is a server that allows run Django on Heroku.
+
+Gunicorn ‘Green Unicorn’ is a Python WSGI HTTP Server for UNIX. It’s a pre-fork worker model ported from Ruby’s Unicorn project. The Gunicorn server is broadly compatible with various web frameworks, simply implemented, light on server resource usage, and fairly speedy.
+
+[Psycopg2](https://pypi.org/project/psycopg2/)
+
+Used to connect the app with PostgreSQL.
+
+Psycopg is the most popular PostgreSQL database adapter for the Python programming language. Its main features are the complete implementation of the Python DB API 2.0 specification and the thread safety (several threads can share the same connection). It was designed for heavily multi-threaded applications that create and destroy lots of cursors and make a large number of concurrent “INSERT”s or “UPDATE”s.
+
+Psycopg 2 is mostly implemented in C as a libpq wrapper, resulting in being both efficient and secure. It features client-side and server-side cursors, asynchronous communication and notifications, “COPY TO/COPY FROM” support. Many Python types are supported out-of-the-box and adapted to matching PostgreSQL data types; adaptation can be extended and customized thanks to a flexible objects adaptation system.
+
+Psycopg 2 is both Unicode and Python 3 friendly.
+
 ### Content
 
 #### The background images were taken from 
 
-Pixabay - https://pixabay.com/ 
+[Pixabay](https://pixabay.com/) 
 
 #### Some of the menus items were taken from
 
-Cornucopia - https://cornucopia.ie/
+[Cornucopia](https://cornucopia.ie/)
 
 #### The images of the media buttons were taken from
 
-Font Awesome - https://fontawesome.com/
+[Font Awesome](https://fontawesome.com/)
 
 
 

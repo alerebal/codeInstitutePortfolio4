@@ -36,4 +36,3 @@ class TestViews(TestCase):
         response = self.client.get(f'/edit_reservation/{reservation.pk}/None')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'edit_reservation.html')
-

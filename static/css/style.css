@@ -147,6 +147,7 @@ form button {
 .custom-btn {
     background-color: var(--cl-primary);
     color: var(--cl-neutral);
+    font-weight: 900;
     padding: .8em 1.3em;
 }
 
@@ -292,12 +293,18 @@ footer {
         width: 90%;
     }
 
+    form label {
+        font-size: 1.2em;
+        font-weight: 900;
+    }
+
     form button {
         width: 100%;
     }
 
     .custom-btn {
         padding: .2em .8em;
+        font-size: 1.4em;
     }
 
     /* Edit reservation */

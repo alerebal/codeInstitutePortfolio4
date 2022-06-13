@@ -33,5 +33,6 @@ class TestGeneralFunctions(TestCase):
                                                  phone='627278010')
         is_duplicated = check_duplicated_reservations(reservation.date,
                                                       reservation.time,
-                                                      reservation.email)
+                                                      reservation.email,
+                                                      reservation.guests)
         self.assertTrue(is_duplicated)
