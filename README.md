@@ -176,7 +176,7 @@ I used the command `heroku login -i` to enter my credentials, then linked the lo
 
 [Vegan Restaurant is running here.](https://ale-restaurant.herokuapp.com/) 
 
-[This is the admin panel](https://8000-alerebal-codeinstitutep-hnn3i7b5zt4.ws-eu47.gitpod.io/admin/)
+[This is the admin panel](https://ale-restaurant.herokuapp.com/admin/)
 
 - You can log in with:
 
