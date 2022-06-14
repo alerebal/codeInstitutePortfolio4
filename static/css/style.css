@@ -133,9 +133,10 @@ form p {
     margin-top: 1em;
 }
 
-form input, select {
+form input, select, textarea {
     border-radius: 5px;
     border: var(--cl-primary) 2px solid;
+    padding: .15em .6em;
 }
 
 form button {
@@ -143,6 +144,9 @@ form button {
     margin: 0 auto;
 }
 
+form textarea {
+    height: 20vh
+}
 
 .custom-btn {
     background-color: var(--cl-primary);

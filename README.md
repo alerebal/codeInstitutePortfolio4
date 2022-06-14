@@ -38,6 +38,10 @@ If the reservation has been done, a messsage is shown to the user
 
 ![Reservation confirm msg](static/img/readme/pages/confirm-msg.png)
 
+If the user come back to home page clicking the button in the message, in the home page will be shown the reservations that the user already have.
+
+![Home user reservations](static/img/readme/pages/user-home-after-reservation.png)
+
 If the user has another reservation at the same day and time, the reservation won't be saved, another message will be displayed and the user have the possibility to go to that reservation.
 
 ![User has a reservationa at same day and time](static/img/readme/pages/users-has-same-reservation.png)
@@ -56,11 +60,27 @@ If user delete the reservation a message will be shown.
 
 ![After delete reservation](static/img/readme/pages/after-delete-reservation.png)
 
+On the home page there is a form so that the user can check if they already have a reservation.
+
+If they don't have, a message will be shown
+
+![User has no reservations](static/img/readme/pages/home-user-no-reservations.png)
+
+Otherwise a list of reservations will be shown.
+
+![User has reservations](static/img/readme/pages/user-home-after-reservation.png)
+
 ### Menus
 
 Three menus can be displayed. They are accessible from the navigation bar. The following is one of them.
 
 ![Desserts menu](static/img/readme/pages/list-display-desserts.png)
+
+### Contact
+
+Contact form to users send any message to the restaurant.
+
+![Contact form](static/img/readme/pages/contact.png)
 
 ### Admin panel
 
@@ -74,11 +94,13 @@ Items menu panel, from they can modify or add more items.
 
 ![items panel](static/img/readme/admin/admin-menu-items.png)
 
+
 ![add item panel](static/img/readme/admin/admin-add-item.png)
 
 Menus panel with the different menus from where they can add more menus or add items to them.
 
 ![menus panel](static/img/readme/admin/admin-menus.png)
+
 
 ![add or update menu](static/img/readme/admin/admin-menu-selection.png)
 
@@ -118,7 +140,9 @@ When the user is trying to get a reservation, the calendar shows all the days of
 
 ![Python validator views](static/img/readme/tests/pep8-views.png)
 
+
 ![Python validator models](static/img/readme/tests/pep8-models.png)
+
 
 ![Python validator forms](static/img/readme/tests/pep8-forms.png)
 
@@ -128,13 +152,17 @@ When the user is trying to get a reservation, the calendar shows all the days of
 
 ![JS validator](static/img/readme/tests/js-hint.png)
 
+
 ### Lighthouse Testing
 
 ![LH home](static/img/readme/tests/lh-home.png)
 
+
 ![LH menus](static/img/readme/tests/lh-display-menu.png)
 
+
 ![LH reservation form](static/img/readme/tests/lh-reservation-form.png)
+
 
 ![LH contact](static/img/readme/tests/lh-contact.png)
 
@@ -145,6 +173,16 @@ Once I finished to set all the variables I had to configure in the settings file
 I created a new app on Heroku and pushed the project to GitHub. But currently it is not possible to connect GitHub to Heroku, so I had to do the deployment from the terminal.
 
 I used the command `heroku login -i` to enter my credentials, then linked the local project to the Heroku app with the command `heroku git:remote -my heroku app-`. After that I just used `git push heroku main` to deploy the app to Heroku.
+
+[Vegan Restaurant is running here.](https://ale-restaurant.herokuapp.com/) 
+
+[This is the admin panel](https://8000-alerebal-codeinstitutep-hnn3i7b5zt4.ws-eu47.gitpod.io/admin/)
+
+- You can log in with:
+
+        Usersname: CodeInstitute
+        Password: CIAdminPanel
+
 
 ## Resourses
 
