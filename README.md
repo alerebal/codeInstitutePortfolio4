@@ -166,6 +166,57 @@ When the user is trying to get a reservation, the calendar shows all the days of
 
 ![LH contact](static/img/readme/tests/lh-contact.png)
 
+### Django Test
+
+- I have used Django Test to testing the application.
+
+#### Models should return a string
+
+- Check with a wrong string
+
+![Model testing fails](static/img/readme/testing/test-model-str-error.png)
+
+- Check with a correct string
+
+![Model testing pass](static/img/readme/testing/test-models-str-return.png)
+
+#### Reservation Form Required Fields
+
+- Check the fields required are filled
+
+![Reservarion form requirided fields](static/img/readme/testing/form-reservation-required-files.png)
+
+#### Reservation form phone not required
+
+- Check phone field is not required
+
+![Reservation form phone not required](static/img/readme/testing/form-reservation-phone-not-required.png)
+
+#### Reservation form meta fail
+
+- Change the oreder or the meta class fails
+
+![Reservation form meta fail](static/img/readme/testing/form-reservation-fail-meta.png)
+
+#### Reservation form meta pass
+
+![Reservation form meta pass](static/img/readme/testing/form-reservation-meta.png)
+
+#### Is Room Available
+
+- Check if the function **is_room_available** returns False if there is no room in the restaurant.
+
+![Is room available](static/img/readme/testing/is_room_available.png)
+
+
+#### Duplicated Reservation
+
+![Duplicated reservation error](static/img/readme/testing/duplicated_reservations_error.png)
+
+- When I used the email that already has a reservation assigned, the funcion **is_duplicated** return True, so the reservation won't be saved
+
+![Duplicated reservation](static/img/readme/testing/duplicated_reservations.png)
+
 ## The app has been deployed in Heroku.
 
 Once I finished to set all the variables I had to configure in the settings file(Postgres, Cloudinary and different more variables), create a requirements.txt, set enviroment variables and a Procfile file, the project was ready to deployed.

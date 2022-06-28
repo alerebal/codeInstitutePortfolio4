@@ -8,7 +8,7 @@ class TestModels(TestCase):
 
     def test_reservation_string_return(self):
         """ Checking string returned """
-        reservation = Reservation.objects.create(guests=0,
+        reservation = Reservation.objects.create(guests=1,
                                                  date='2022-4-30',
                                                  time='12:00',
                                                  name='Alejandro',
@@ -16,7 +16,7 @@ class TestModels(TestCase):
                                                  email='ale@gmail.com',
                                                  phone='627278010')
         self.assertEqual(str(reservation),
-                         'Alejandro Rebaldería - 2022-4-30 - 0')
+                         'Alejandro Rebaldería - 2022-4-30 - 1')
 
     def test_item_string_return(self):
         """ Checking string returned """

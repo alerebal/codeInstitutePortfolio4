@@ -10,7 +10,7 @@ class TestGeneralFunctions(TestCase):
     def test_is_room_available(self):
         """ Return false if no room """
         reservation = Reservation.objects.create(guests=5,
-                                                 date='2022-6-30',
+                                                 date='2022-10-30',
                                                  time='12:00',
                                                  name='Alejandro',
                                                  last_name='Rebaldería',
@@ -25,7 +25,7 @@ class TestGeneralFunctions(TestCase):
             Return true if there is another reservatoin at same day and time
         """
         reservation = Reservation.objects.create(guests=2,
-                                                 date='2022-05-24',
+                                                 date='2022-10-24',
                                                  time='12:00',
                                                  name='Alejandro',
                                                  last_name='Rebaldería',
