@@ -217,6 +217,14 @@ When the user is trying to get a reservation, the calendar shows all the days of
 
 ![Duplicated reservation](static/img/readme/testing/duplicated_reservations.png)
 
+### Coverage Report
+
+Coverage report gave me 76% of the project checked, very low in the views.py file, only 35%.
+
+I did all the automated tests I could and a lot of manual testing (JS file too) to check the rest of the features, the app looks work well at the moment.
+
+![Coverage report](static/img/readme/testing/coverage.png)
+
 ## The app has been deployed in Heroku.
 
 Once I finished to set all the variables I had to configure in the settings file(Postgres, Cloudinary and different more variables), create a requirements.txt, set enviroment variables and a Procfile file, the project was ready to deployed.
