@@ -157,7 +157,7 @@ def is_room_available(date, time, guests, room=30):
     if total_people > seventy_five_percent and total_people < room:
         # if the seventy five percent of the restaurant is ocupated
         # a message must be sent to the admin
-        print(admin_msg_ocupation(date, time))
+        admin_msg_ocupation(date, time)
     return total_people <= room
 
 

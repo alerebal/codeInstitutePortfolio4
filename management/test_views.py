@@ -12,6 +12,12 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
 
+    def test_home_page_post(self):
+        """ Home is render correctly """
+        response = self.client.post('/')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'home.html')
+
     def test_home_user_list_page(self):
         """ Home is render correctly when user email exists """
         response = self.client.get('/home/some_user@gmail.com/')

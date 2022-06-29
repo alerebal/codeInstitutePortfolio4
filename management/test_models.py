@@ -1,6 +1,7 @@
 """ Management model tests """
+import datetime
 from django.test import TestCase
-from .models import Reservation, Item, Menu
+from .models import Reservation, Item, Menu, Message
 
 
 class TestModels(TestCase):
@@ -31,3 +32,11 @@ class TestModels(TestCase):
         menu = Menu.objects.create(name='Dishes')
         self.assertEqual(str(menu),
                          'Dishes')
+
+    def test_message_string_return(self):
+        """ Checking string returned """
+        date = datetime.date.today()
+        msg = Message.objects.create(name='Ale',
+                                     is_answered=False)
+        self.assertEqual(str(msg), f'Ale - {date} - Answered: {False}')
+
